@@ -12,10 +12,13 @@ class ShoppingTableViewController: UITableViewController {
     
     
     
+    
     var shoppingList: [String?] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .lightGray
         
+        tableView.rowHeight = 80
     }
     
 //    func btnDesign(buttonObject: UIButton) {
@@ -35,20 +38,20 @@ class ShoppingTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppedTableViewCell") as! ShoppedTableViewCell
         
         cell.shopedLabel.text = shoppingList[indexPath.row]
-        cell.shopedLabel.font = .boldSystemFont(ofSize: 18) //15 > 13
+        cell.shopedLabel.font = .boldSystemFont(ofSize: 13) //15 > 13
         
         return cell
     }
     
     //셀의 높이
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.section == 0 && indexPath.row == 0 {
-            return 44
-        }else {
-            return 44
-        }
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        if indexPath.section == 0 && indexPath.row == 0 {
+//            return 44
+//        }else {
+//            return 44
+//        }
+//    }
     
     @IBAction func textFieldClicked(_ sender: UITextField) {
         

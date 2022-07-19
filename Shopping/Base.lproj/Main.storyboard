@@ -50,52 +50,56 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppedTableViewCell" rowHeight="67" id="eVA-nL-sCx" customClass="ShoppedTableViewCell" customModule="Shopping" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="137.5" width="414" height="67"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppedTableViewCell" rowHeight="80" id="eVA-nL-sCx" customClass="ShoppedTableViewCell" customModule="Shopping" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="137.5" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eVA-nL-sCx" id="vuo-Uv-mKc" customClass="Shopping">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llf-bs-akr">
-                                            <rect key="frame" x="32" y="23" width="31" height="21"/>
+                                            <rect key="frame" x="40" y="31" width="31" height="18"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="31" id="bhm-z3-u0i"/>
-                                                <constraint firstAttribute="width" constant="31" id="pzC-Fb-BDe"/>
+                                                <constraint firstAttribute="width" constant="31" id="1PR-0r-k2a"/>
                                             </constraints>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="checkmark.square.fill" catalog="system" title=""/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJh-1Q-HEV">
-                                            <rect key="frame" x="83" y="23" width="248" height="21"/>
+                                            <rect key="frame" x="91" y="21" width="218.5" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="1aj-Tk-m4L"/>
+                                                <constraint firstAttribute="width" constant="150" id="BcD-ks-WG7"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lV8-Th-dUl">
-                                            <rect key="frame" x="351" y="23" width="31" height="21"/>
+                                            <rect key="frame" x="329.5" y="31" width="44.5" height="18"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="31" id="5RI-rt-ABN"/>
-                                                <constraint firstAttribute="width" constant="31" id="G8t-dl-yre"/>
+                                                <constraint firstAttribute="width" constant="44.5" id="mpa-lB-IYw"/>
                                             </constraints>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system" title=""/>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="llf-bs-akr" firstAttribute="centerY" secondItem="vuo-Uv-mKc" secondAttribute="centerY" id="6ed-1z-FPa"/>
-                                        <constraint firstItem="llf-bs-akr" firstAttribute="leading" secondItem="vuo-Uv-mKc" secondAttribute="leadingMargin" constant="12" id="CYY-WW-OuM"/>
-                                        <constraint firstItem="lV8-Th-dUl" firstAttribute="centerY" secondItem="vuo-Uv-mKc" secondAttribute="centerY" id="EAh-Yc-VKA"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="lV8-Th-dUl" secondAttribute="trailing" constant="12" id="GDB-xD-G3l"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="lV8-Th-dUl" secondAttribute="bottom" constant="12" id="SOF-A3-z1B"/>
-                                        <constraint firstItem="lV8-Th-dUl" firstAttribute="top" secondItem="vuo-Uv-mKc" secondAttribute="topMargin" constant="12" id="XkV-gm-WYx"/>
-                                        <constraint firstItem="llf-bs-akr" firstAttribute="top" secondItem="vuo-Uv-mKc" secondAttribute="topMargin" constant="12" id="ctS-hD-IJ6"/>
-                                        <constraint firstItem="EJh-1Q-HEV" firstAttribute="centerY" secondItem="vuo-Uv-mKc" secondAttribute="centerY" id="lG6-UF-ptO"/>
-                                        <constraint firstItem="EJh-1Q-HEV" firstAttribute="leading" secondItem="llf-bs-akr" secondAttribute="trailing" constant="20" id="qhO-In-Kv4"/>
-                                        <constraint firstItem="EJh-1Q-HEV" firstAttribute="top" secondItem="vuo-Uv-mKc" secondAttribute="topMargin" constant="12" id="rBo-02-VEs"/>
-                                        <constraint firstItem="lV8-Th-dUl" firstAttribute="leading" secondItem="EJh-1Q-HEV" secondAttribute="trailing" constant="20" id="rIz-Iq-hrE"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="llf-bs-akr" secondAttribute="bottom" constant="12" id="sLQ-M6-MsY"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="EJh-1Q-HEV" secondAttribute="bottom" constant="12" id="yQM-2V-719"/>
+                                        <constraint firstItem="lV8-Th-dUl" firstAttribute="centerY" secondItem="vuo-Uv-mKc" secondAttribute="centerY" id="47H-Rf-kaf"/>
+                                        <constraint firstItem="llf-bs-akr" firstAttribute="top" secondItem="vuo-Uv-mKc" secondAttribute="topMargin" constant="20" id="4e1-li-y2r"/>
+                                        <constraint firstItem="lV8-Th-dUl" firstAttribute="leading" secondItem="EJh-1Q-HEV" secondAttribute="trailing" constant="20" id="Nhl-jY-VaW"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="EJh-1Q-HEV" secondAttribute="bottom" constant="10" id="PV1-rt-RQR"/>
+                                        <constraint firstItem="llf-bs-akr" firstAttribute="centerY" secondItem="vuo-Uv-mKc" secondAttribute="centerY" id="R3X-jH-8eC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="lV8-Th-dUl" secondAttribute="trailing" constant="20" id="ZTz-jv-cHU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="lV8-Th-dUl" secondAttribute="bottom" constant="20" id="amu-gV-SXZ"/>
+                                        <constraint firstItem="EJh-1Q-HEV" firstAttribute="leading" secondItem="llf-bs-akr" secondAttribute="trailing" constant="20" id="dDh-Ej-axW"/>
+                                        <constraint firstItem="lV8-Th-dUl" firstAttribute="top" secondItem="vuo-Uv-mKc" secondAttribute="topMargin" constant="20" id="dyh-G1-lYE"/>
+                                        <constraint firstItem="llf-bs-akr" firstAttribute="leading" secondItem="vuo-Uv-mKc" secondAttribute="leadingMargin" constant="20" id="h0i-St-PKS"/>
+                                        <constraint firstItem="EJh-1Q-HEV" firstAttribute="top" secondItem="vuo-Uv-mKc" secondAttribute="topMargin" constant="10" id="hCN-OQ-xPd"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="llf-bs-akr" secondAttribute="bottom" constant="20" id="iE3-AN-S5W"/>
+                                        <constraint firstItem="EJh-1Q-HEV" firstAttribute="centerY" secondItem="vuo-Uv-mKc" secondAttribute="centerY" id="l8I-36-50G"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -139,6 +143,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
