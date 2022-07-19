@@ -8,20 +8,22 @@
 import UIKit
 
 class ShoppingTableViewController: UITableViewController {
+    @IBOutlet weak var test: UITextField!
     
     
-    @IBOutlet weak var userTextField: UITextField!
     
-    var shoppingList: [String] = []
-
+    var shoppingList: [String?] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
+//    func btnDesign(buttonObject: UIButton) {
+//    }
+    
     //섹션의 개수
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     //셀의 개수
@@ -38,17 +40,27 @@ class ShoppingTableViewController: UITableViewController {
         return cell
     }
     
+    //셀의 높이
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 && indexPath.row == 0 {
-            return 400
+            return 44
         }else {
             return 44
         }
     }
     
+    @IBAction func textFieldClicked(_ sender: UITextField) {
+        
+    }
+    
+    
+    //버튼클릭
     @IBAction func sendButtonClicked(_ sender: UIButton) {
-        shoppingList.append(userTextField.text!)
+
+        shoppingList.append(test.text!)
+        tableView.reloadData()
+        
     }
     
 }
