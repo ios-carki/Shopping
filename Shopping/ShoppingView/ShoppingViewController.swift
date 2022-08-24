@@ -9,6 +9,7 @@ import UIKit
 
 import RealmSwift
 import SnapKit
+import Toast
 
 class ShoppingViewController: BaseViewController {
     
@@ -20,7 +21,12 @@ class ShoppingViewController: BaseViewController {
         return view
     }()
     
-    var tasks: Results<ShopList>!
+    var tasks: Results<ShopList>! {
+        didSet {
+            tableView.reloadData()
+            print("Task Changed!")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +45,27 @@ class ShoppingViewController: BaseViewController {
         navigationItem.rightBarButtonItem?.tintColor = .white
         naviSet(title: "쇼핑리스트")
         
+        // 정렬버튼
+        let sortButton = UIBarButtonItem(title: "정렬", style: .plain, target: self, action: #selector(sorButtonClicked))
+        let filterButton = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterButtonClicked))
+        navigationItem.leftBarButtonItems = [sortButton, filterButton]
+        sortButton.tintColor = .white
+        filterButton.tintColor = .white
+        print("Realm is located at:", localRealm.configuration.fileURL!)
     }
     
+    // MARK: - 정렬버튼, 필터버튼 클릭
+    //정렬
+    @objc func sorButtonClicked() {
+        tasks = localRealm.objects(ShopList.self).sorted(byKeyPath: "title", ascending: true)
+        tableView.reloadData()
+    }
+    
+    //필터
+    @objc func filterButtonClicked() {
+        tasks = localRealm.objects(ShopList.self).filter("title CONTAINS '구매'")
+    }
+    // MARK: -
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -79,7 +104,19 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         cell.textLabel?.text = tasks[indexPath.row].title
         
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deleteRow = tasks?[indexPath.row]
+            try! localRealm.write {
+                localRealm.delete(deleteRow!)
+                self.view.makeToast("해당 일정이 삭제되었습니다.")
+            }
+            tableView.reloadData()
+        }
     }
     
     
