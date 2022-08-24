@@ -24,5 +24,7 @@ class ShopList: Object {
         self.init()
         self.title = title
         self.todoList = todoList
+        self.favorite = false
+        self.clear = clear
     }
 }
