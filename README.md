@@ -1,5 +1,12 @@
 # Shopping (Make Repo on 2022.07.19)
 
+# ShoppingApp Update ( added 2022.08.25 )
+### 개선 내용
+- 정렬(이름순 정렬)버튼을 누르면 액션시트가 present되면서 정렬방법을 고를 수 있도록 변경 (추후 정렬방법 추가 구현 예정)
+- 즐겨찾기 등록 시 별 이미지가 즐겨찾기 등록 여부에 따라 직관적으로 보이도록 기능 추가
+
+https://user-images.githubusercontent.com/44957712/186460986-602f4edc-3a73-481d-997c-1699d2ba6a1e.mov
+
 # ShoppingApp Update ( added 2022.08.24 )
 ### 개선 내용
 - 일정 삭제 기능 추가
