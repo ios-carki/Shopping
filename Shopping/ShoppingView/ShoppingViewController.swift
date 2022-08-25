@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import SnapKit
 import Toast
+import Network
 
 class ShoppingViewController: BaseViewController {
     
@@ -36,6 +37,8 @@ class ShoppingViewController: BaseViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //셀 선언
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -111,8 +114,6 @@ class ShoppingViewController: BaseViewController {
         naviApperance.backgroundColor = .systemMint
         navigationController?.navigationBar.standardAppearance = naviApperance
         navigationController?.navigationBar.scrollEdgeAppearance = naviApperance
-        
-        
     }
     
 }
@@ -133,7 +134,33 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.imageView?.tintColor = .black
         
         
+        
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = EditWriteViewController()
+        let shopping = tasks[indexPath.row]
+        
+        vc.id = shopping.objectId
+                
+        let nav = UINavigationController(rootViewController: vc)
+        
+//        self.navigationController?.pushViewController(vc, animated: true) //push 화면전환
+        nav.modalPresentationStyle = .fullScreen
+        
+        self.present(nav, animated: true)
+        
+//        let editVc = WriteView()
+//        editVc.title[indexPath.row].text = "g"
+//        editVc.title.placeholder = "dd"
+        let editView = EditWriteView()
+        
+//        vc.title = title.text!
     }
     
     // MARK: - 2022.08.24
@@ -181,5 +208,24 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [favorite])
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     
 }
+
+
+//MARK: - 셀 수정화면 데이터베이스에있는 값을 토대로 수정
+/*
+ in didSelectRowAt
+ vc.id = shopping.objectId (추가)
+ 
+ in EditWriteViewController
+ var id: ObjectId? (추가 선언)
+ 
+ 
+ let task = localRealm.objects(ShopList.self).where { $0.objectId == id!}.first
+ mainView.title.text = task?.title
+ mainView.todoList.text = task?.todoList
+ */

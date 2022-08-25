@@ -8,21 +8,31 @@
 import UIKit
 import RealmSwift
 
-class WriteViewController: BaseViewController {
+class EditWriteViewController: BaseViewController {
     
     let mainView = WriteView()
+    //var mainView:WriteView?
     let localRealm = try! Realm()
+    
+    var id: ObjectId?
+    
     
     override func loadView() {
         self.view = mainView
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        naviSet(title: "쇼핑리스트 작성")
+        naviSet(title: "쇼핑리스트 수정")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(cancelButton))
+        
+        let task = localRealm.objects(ShopList.self).where { $0.objectId == id!}.first
+        mainView.title.text = task?.title
+        mainView.todoList.text = task?.todoList
     }
     
     override func configure() {

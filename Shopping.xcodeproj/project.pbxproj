@@ -27,6 +27,8 @@
 		C3E268E228868B62005DD216 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E268E028868B62005DD216 /* LaunchScreen.storyboard */; };
 		C3E268EA28868C81005DD216 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E268E928868C81005DD216 /* ShoppingTableViewController.swift */; };
 		C3E9CBF928869A55009BF42C /* ShoppedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E9CBF828869A55009BF42C /* ShoppedTableViewCell.swift */; };
+		C3FB8BC828B7584900210E54 /* EditWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FB8BC728B7584900210E54 /* EditWriteViewController.swift */; };
+		C3FB8BCA28B7585100210E54 /* EditWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FB8BC928B7585100210E54 /* EditWriteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		C3E268E328868B62005DD216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E268E928868C81005DD216 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
 		C3E9CBF828869A55009BF42C /* ShoppedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppedTableViewCell.swift; sourceTree = "<group>"; };
+		C3FB8BC728B7584900210E54 /* EditWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWriteViewController.swift; sourceTree = "<group>"; };
+		C3FB8BC928B7585100210E54 /* EditWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWriteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			children = (
 				C3504FDC28B3BD63004F51B7 /* WriteViewController.swift */,
 				C3504FDE28B3BD69004F51B7 /* WriteView.swift */,
+				C3FB8BC728B7584900210E54 /* EditWriteViewController.swift */,
+				C3FB8BC928B7585100210E54 /* EditWriteView.swift */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -227,6 +233,8 @@
 				C3504FD228B376CB004F51B7 /* ShoppingView.swift in Sources */,
 				C3E268D628868B61005DD216 /* AppDelegate.swift in Sources */,
 				C3E268D828868B61005DD216 /* SceneDelegate.swift in Sources */,
+				C3FB8BCA28B7585100210E54 /* EditWriteView.swift in Sources */,
+				C3FB8BC828B7584900210E54 /* EditWriteViewController.swift in Sources */,
 				C3504FDF28B3BD69004F51B7 /* WriteView.swift in Sources */,
 				C3504FDA28B3B732004F51B7 /* ShoppingList.swift in Sources */,
 				C3504FD028B376C0004F51B7 /* ShoppingViewController.swift in Sources */,
