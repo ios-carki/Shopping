@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditWriteView: BaseView {
+final class EditWriteView: BaseView {
     
     let title: WriteTextField = {
         let view = WriteTextField()
@@ -25,7 +25,7 @@ class EditWriteView: BaseView {
     
     let doneButton: UIButton = {
         let view = UIButton()
-        view.setTitle("완료", for: .normal)
+        view.setTitle("수정하기", for: .normal)
         view.titleLabel?.font = .systemFont(ofSize: 20, weight: .heavy)
         view.setTitleColor(UIColor.white, for: .normal)
         view.backgroundColor = .systemMint
@@ -35,33 +35,48 @@ class EditWriteView: BaseView {
         return view
     }()
     
+    let loadImage: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .blue
+        return view
+    }()
+    
     override func configureUI() {
-        [title, todoList, doneButton].forEach {
+        [title, todoList, doneButton, loadImage].forEach {
             self.addSubview($0)
         }
     }
     
     override func setConstraints() {
         
+        let sideMargin = 20
+        
         title.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(50)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(20)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(sideMargin)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-sideMargin)
             make.height.equalTo(50)
         }
         
         todoList.snp.makeConstraints { make in
             make.top.equalTo(title).offset(70)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(20)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(sideMargin)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-sideMargin)
             make.height.equalTo(150)
         }
         
         doneButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(20)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(sideMargin)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-sideMargin)
             make.height.equalTo(50)
+        }
+        
+        loadImage.snp.makeConstraints { make in
+            make.top.equalTo(todoList.snp.bottom).offset(70)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(sideMargin)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-sideMargin)
+            make.height.equalTo(150)
         }
     }
 }

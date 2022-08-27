@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShoppingView: BaseView {
+final class ShoppingView: BaseView {
     
     override func configureUI() {
         

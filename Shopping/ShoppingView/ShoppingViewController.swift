@@ -12,9 +12,20 @@ import SnapKit
 import Toast
 import Network
 
-class ShoppingViewController: BaseViewController {
+//프로토콜을 이용한 값 전달
+protocol SelectedCellInfoDelegate {
+    
+    func sendData(title: UITextField, todoList: UITextField)
+}
+
+final class ShoppingViewController: BaseViewController {
+    let mainView = EditWriteView()
     
     let localRealm = try! Realm()
+    
+    //선택된 셀의 타이틀, 투두리스트
+    var selectedTitle: UITextField?
+    var selectedTodolist: UITextField?
     
     let tableView: UITableView = {
        let view = UITableView()
@@ -62,7 +73,7 @@ class ShoppingViewController: BaseViewController {
     }
     
     // MARK: - 정렬버튼, 필터버튼 클릭
-    //정렬버튼 -> 액션시트
+    ///정렬버튼 -> 액션시트 \이동할거야
     @objc func sortButtonClicked() {
         //액션시트
         let sortActionSheet = UIAlertController(title: "정렬기준", message: nil, preferredStyle: .actionSheet)
@@ -131,7 +142,9 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.imageView?.image = UIImage(systemName: "star")
         }
-        cell.imageView?.tintColor = .black
+        cell.imageView?.tintColor = .white
+        
+        
         
         
         
@@ -147,6 +160,16 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
         let shopping = tasks[indexPath.row]
         
         vc.id = shopping.objectId
+        
+        
+        
+        
+
+//        try! localRealm.write {
+//            taskToUpdate.title = mainView.title.text!
+//            taskToUpdate.todoList = mainView.title.text!
+//            tableView.reloadData()
+//        }
                 
         let nav = UINavigationController(rootViewController: vc)
         
@@ -210,6 +233,19 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    
+}
+
+extension ShoppingViewController: SelectedCellInfoDelegate {
+    
+    func sendData(title: UITextField, todoList: UITextField) {
+        var id: ObjectId?
+        let task = localRealm.objects(ShopList.self).where { $0.objectId == id!}.first
+        
+        mainView.title.text = task?.title
+        mainView.todoList.text = task?.todoList
     }
     
     

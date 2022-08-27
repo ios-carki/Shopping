@@ -8,7 +8,9 @@
 import UIKit
 import RealmSwift
 
-class WriteViewController: BaseViewController {
+import FSCalendar
+
+final class WriteViewController: BaseViewController {
     
     let mainView = WriteView()
     let localRealm = try! Realm()
@@ -28,15 +30,24 @@ class WriteViewController: BaseViewController {
     override func configure() {
         mainView.doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
+        mainView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     @objc func doneButtonClicked() {
-        let task = ShopList(title: mainView.title.text!, todoList: mainView.todoList.text!)
+        let task = ShopList(title: mainView.title.text!, todoList: mainView.todoList.text!, regDate: Date())
         try! localRealm.write({
             localRealm.add(task)
             print("Realm Succeed!")
             dismiss(animated: true)
         })
+    }
+    
+    
+    
+    //텝 제스쳐
+    @objc func tapGesture() {
+        view.endEditing(true)
     }
     
     func naviSet(title: String) {

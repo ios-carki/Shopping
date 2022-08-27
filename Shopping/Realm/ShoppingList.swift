@@ -14,8 +14,8 @@ class ShopList: Object {
     //@Persisted var addDate = Date() //작성 날짜(필수)
     //@Persisted var regDate = Date() //등록 날짜(필수)
     @Persisted var favorite: Bool //즐겨찾기(필수)
-    @Persisted var imageExist: Bool //사진 URLString(옵션)
     @Persisted var todoList: String //할 일 목록
+    @Persisted var regDate = Date()
     
     //1.이미지가 있는지 없는지
     //2.이미지여부 -> Bool타입
@@ -24,11 +24,11 @@ class ShopList: Object {
     //PK(필수): Int, String, UUID(권장), ObjectID(권장)
     @Persisted(primaryKey: true) var objectId: ObjectId
 
-    convenience init(title: String, todoList: String) {
+    convenience init(title: String, todoList: String, regDate: Date) {
         self.init()
         self.title = title
         self.todoList = todoList
         self.favorite = false
-        self.imageExist = false
+        self.regDate = regDate
     }
 }
