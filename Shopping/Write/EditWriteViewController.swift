@@ -13,53 +13,56 @@ final class EditWriteViewController: BaseViewController {
     let mainView = WriteView()
     //var mainView:WriteView?
     let localRealm = try! Realm()
+    //데이터베이스 데이터 업데이트
+//    try? localRealm.write {
+//        localRealm.add(data, update:.modified)
+//    }
     
     var id: ObjectId?
-    
-    
+    var receiveTitle: String?
+    var receiveTodoList: String?
     
     
     override func loadView() {
         self.view = mainView
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        //받아온 데이터 데이터 수정뷰에 보여주기
+        mainView.title.text = receiveTitle
+        mainView.todoList.text = receiveTodoList
+        
         naviSet(title: "쇼핑리스트 수정")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(cancelButton))
         
         //상세페이지
         let task = localRealm.objects(ShopList.self).where { $0.objectId == id! }.first
-        var edittedTitle = mainView.title.text
-        var edittedTodoList = mainView.todoList.text
         
-//        edittedTitle = task?.title
-//        edittedTodoList = task?.todoList
-//
-        let editTask = ShopList(title: edittedTitle!, todoList: edittedTodoList!, regDate: Date())
-        try! localRealm.write({
-            localRealm.add(editTask)
-            print("Realm Succed!")
-        })
         
-//        let taskToUpdate = tasks[indexPath.row]
-//
-//        try! localRealm.write {
-//            taskToUpdate.content = "수정한 내용"
-//            taskToUpdate.diaryTitle = "수정한 제목"
-//            tableView.reloadData()
-//        }
+//        task?.title = mainView.title.text!
+//        task?.todoList = mainView.todoList.text!
         
-//        let task = ShopList(title: mainView.title.text!, todoList: mainView.todoList.text!, imageURL: nil)
-//        try! localRealm.write({
-//            localRealm.add(task)
-//            print("Realm Succeed!")
-//            dismiss(animated: true)
-//        })
+        //받아온 데이터를 여기서 보여주고 수정하기
+        //수정뷰에서 작성한 내용을 램 데이터에 저장하기
+        try! localRealm.write {
+//            let task = localRealm.objects(ShopList.self).where { $0.objectId == id!}.first
+            task?.title = mainView.title.text!
+            task?.todoList = mainView.todoList.text!
+            print("Realm Success load Data!")
+
+            //업데이트
+//            let updateRealm = ShopList(value: ["objectId": id, "title": mainView.title.text, "todoList": mainView.todoList.text])
+//            localRealm.create(ShopList.self, value: ["objectId": id, "title": mainView.title.text, "todoList": mainView.todoList.text], update: .modified)
+        }
+        
+        try! localRealm.write {
+            localRealm.create(ShopList.self, value: ["objectId": id, "title": mainView.title.text, "todoList": mainView.todoList.text], update: .modified)
+            print("Realm Update Success")
+        }
+        
     }
     
     override func configure() {

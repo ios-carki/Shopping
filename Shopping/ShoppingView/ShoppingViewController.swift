@@ -137,19 +137,12 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         let nowDate = tasks[indexPath.row].regDate
-        
-        print("나우데이트")
-        print(nowDate)
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         dateFormatter.locale = Locale(identifier: "ko-kr")
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        let convertDate = nowDate.addingTimeInterval(32400)
-        let convertDateKST = dateFormatter.string(for: convertDate)
         
-        
-        print("컨버트 데이트")
-        print(convertDateKST)
+        let convertDate = dateFormatter.string(for: nowDate)
         
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
 //        cell.textLabel?.text = tasks[indexPath.row].title
@@ -159,7 +152,7 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.textLabel?.text = tasks[indexPath.row].title
         }
-        cell.detailTextLabel?.text = convertDateKST
+        cell.detailTextLabel?.text = convertDate
         cell.detailTextLabel?.textColor = .lightGray
         
         
@@ -181,6 +174,9 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
         let shopping = tasks[indexPath.row]
         
         vc.id = shopping.objectId
+        
+        vc.receiveTitle = tasks[indexPath.row].title
+        vc.receiveTodoList = tasks[indexPath.row].todoList
         
         
         
