@@ -1,5 +1,12 @@
 # Shopping (Make Repo on 2022.07.19)
 
+# ShoppingApp Update ( added 2022.08.28 )
+### 개선 내용
+- cell의 subTitle에 regDate 띄우기 ( UTC -> KST)
+
+<img width="1276" alt="스크린샷 2022-08-28 오후 1 44 15" src="https://user-images.githubusercontent.com/44957712/187057840-ef8582b5-c55c-446d-894f-7a4cbc0e523c.png">
+
+
 # ShoppingApp Update ( added 2022.08.25 )
 ### 개선 내용
 - 정렬(이름순 정렬)버튼을 누르면 액션시트가 present되면서 정렬방법을 고를 수 있도록 변경 (추후 정렬방법 추가 구현 예정)
