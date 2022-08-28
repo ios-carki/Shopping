@@ -135,19 +135,40 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = tasks[indexPath.row].title
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let nowDate = tasks[indexPath.row].regDate
+        
+        print("나우데이트")
+        print(nowDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.locale = Locale(identifier: "ko-kr")
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        let convertDate = nowDate.addingTimeInterval(32400)
+        let convertDateKST = dateFormatter.string(for: convertDate)
+        
+        
+        print("컨버트 데이트")
+        print(convertDateKST)
+        
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
+//        cell.textLabel?.text = tasks[indexPath.row].title
+        
+        if tasks[indexPath.row].title == "" {
+            cell.textLabel?.text = "제목없음"
+        } else {
+            cell.textLabel?.text = tasks[indexPath.row].title
+        }
+        cell.detailTextLabel?.text = convertDateKST
+        cell.detailTextLabel?.textColor = .lightGray
+        
+        
         if tasks[indexPath.row].favorite {
             cell.imageView?.image = UIImage(systemName: "star.fill")
         } else {
             cell.imageView?.image = UIImage(systemName: "star")
         }
-        cell.imageView?.tintColor = .white
-        
-        
-        
-        
-        
+        cell.imageView?.tintColor = .systemMint
         
         return cell
     }
@@ -250,6 +271,7 @@ extension ShoppingViewController: SelectedCellInfoDelegate {
     
     
 }
+
 
 
 //MARK: - 셀 수정화면 데이터베이스에있는 값을 토대로 수정

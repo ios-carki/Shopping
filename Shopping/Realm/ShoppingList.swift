@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class ShopList: Object {
+    
     @Persisted var title: String //제목(필수)
     //@Persisted var content: String? //내용(옵션)
     //@Persisted var addDate = Date() //작성 날짜(필수)
@@ -25,6 +26,7 @@ class ShopList: Object {
     @Persisted(primaryKey: true) var objectId: ObjectId
 
     convenience init(title: String, todoList: String, regDate: Date) {
+        
         self.init()
         self.title = title
         self.todoList = todoList

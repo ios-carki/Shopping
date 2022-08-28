@@ -51,12 +51,17 @@ final class WriteView: BaseView {
         view.text = "선택된 날짜: \(convertDate)"
         view.textColor = .black
         view.textAlignment = .center
+        view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.black.cgColor
         return view
     }()
     
-
+//    lazy var tapGesture: UITapGestureRecognizer = {
+//        let view = UITapGestureRecognizer()
+//        view.delegate = self
+//        return view
+//    }()
     
     lazy var calendar: FSCalendar = {
         let view = FSCalendar()
@@ -139,7 +144,7 @@ extension WriteView: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegat
         
         let nowDate = date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM월 dd일 hh시 mm분"
+        dateFormatter.dateFormat = "YYYY년 MM월 dd일"
         
         let convertDate = dateFormatter.string(from: nowDate)
 

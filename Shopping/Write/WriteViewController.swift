@@ -22,16 +22,19 @@ final class WriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        mainView.title.delegate = self
+        mainView.todoList.delegate = self
         
         naviSet(title: "쇼핑리스트 작성")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(cancelButton))
+        
+        
     }
     
     override func configure() {
         mainView.doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
-        mainView.addGestureRecognizer(tapGestureRecognizer)
+        
     }
     
     @objc func doneButtonClicked() {
@@ -41,13 +44,6 @@ final class WriteViewController: BaseViewController {
             print("Realm Succeed!")
             dismiss(animated: true)
         })
-    }
-    
-    
-    
-    //텝 제스쳐
-    @objc func tapGesture() {
-        view.endEditing(true)
     }
     
     func naviSet(title: String) {
@@ -64,3 +60,15 @@ final class WriteViewController: BaseViewController {
         dismiss(animated: true)
     }
 }
+
+extension WriteViewController: UITextFieldDelegate{
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
